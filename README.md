@@ -1,2 +1,21 @@
 # apollo
-Real-time or replay video and online or offline data monitor
+
+- Real-time video&data player
+- Replay flv&db
+
+## Server
+
+> Ubuntu + Nginx + Gunicorn + Flask
+
+## Rtmp Streaming
+
+> nginx-rtmp-module + ffmpeg
+
+## Database
+
+> MongoDB
+
+## UI
+
+> jQuery + Bootstrap + Echart + video.js + bmap
+
