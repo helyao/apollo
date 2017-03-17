@@ -23,7 +23,7 @@
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8"></div>
         <div class="col-lg-2 col-md-2 col-sm-2">
-            <p class="time text-right">2017-03-17 22:38:23</p>
+            <p class="time text-right"></p>
         </div>
     </div>
     <div id="wrapper">
@@ -69,11 +69,17 @@
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/moment.min.js"></script>
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+        window.onload = function () {
+            setInterval("$('.time')[0].innerHTML = moment().format('YYYY-MM-DD hh:mm:ss')",1000);
+        }
+
     </script>
 </body>
 </html>
