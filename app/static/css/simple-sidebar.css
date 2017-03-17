@@ -7,6 +7,13 @@
  body {
     overflow-x: hidden;
  }
+ 
+ #title {
+	 height: 48px;
+	 width: 100%;
+	 background-color: black;
+	 position: fixed;
+ }
 
 /* Toggle Styles */
 
@@ -23,6 +30,7 @@
 }
 
 #sidebar-wrapper {
+	margin-top: 48px;
     z-index: 1000;
     position: fixed;
     left: 250px;
@@ -72,7 +80,7 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #97FFFF;
 }
 
 .sidebar-nav li a:hover {
@@ -132,7 +140,7 @@
 #menu-toggle {
     z-index: 1;
     position: fixed;
-    top: 0;
+    top: 48px;
     right: 0;
 }
 
@@ -151,4 +159,10 @@
 .btn-dark:active {
     color: #fff;
     background-color: rgba(0,0,0,0.7);
+}
+
+.title, .time {
+	margin-top: 8px;
+	font-size: 24px;
+	color: white;
 }
