@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="helyao">
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uvgKc03uCSDsZXEdEjT1PaG4rPPVkm1W"></script>
+
+    <style type="text/css">
+        .bg-gray {
+            color: #ddd;
+            background-color: #555;
+        }
+        .text-gray {
+            color: #777;
+        }
+    </style>
+    <title>无人机气体监测</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">
+                <a href="#top" onclick=$("#menu-close").click();>无人机气体监测</a>
+            </li>
+            <li>
+                <a href="#top" onclick=$("#menu-close").click();>主页</a>
+            </li>
+            <li>
+                <a href="#about" onclick=$("#menu-close").click();>说明</a>
+            </li>
+            <li>
+                <a href="#services" onclick=$("#menu-close").click();>提供服务</a>
+            </li>
+            <li>
+                <a href="#portfolio" onclick=$("#menu-close").click();>行业应用</a>
+            </li>
+            <li>
+                <a href="#contact" onclick=$("#menu-close").click();>联系我们</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1> 无人机气体监测系统</h1>
+            <h3>Air quality monitoring system for UAV</h3>
+            <br>
+            <a href="#about" class="btn btn-dark btn-lg">更多了解</a>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>监控航线内的视频信息以及气体监测值</h2>
+                    <p class="lead">可实时获取经纬度，温度，湿度，NO<sub>2</sub>, SO<sub>2</sub>, CO, O<sub>3</sub>, PM10, PM2.5</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Services -->
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    <section id="services" class="services bg-gray">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>提供服务</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-video-camera fa-stack-1x text-gray"></i>
+                            </span>
+                                <h4>
+                                    <strong>作业直播</strong>
+                                </h4>
+                                <p>可远程直播当前作业传回的实时视频信息以及各气体检测值。</p>
+                                <a href="#" class="btn btn-light">更多了解</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-play fa-stack-1x text-gray"></i>
+                            </span>
+                                <h4>
+                                    <strong>作业回放</strong>
+                                </h4>
+                                <p>回放历史作业视频以及各气体检测值。</p>
+                                <a href="#" class="btn btn-light">更多了解</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-info-circle fa-stack-1x text-gray"></i>
+                            </span>
+                                <h4>
+                                    <strong>设备管理</strong>
+                                </h4>
+                                <p>用于查询系统所管辖的设备信息以及作业信息。</p>
+                                <a href="#" class="btn btn-light">更多了解</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-pencil-square-o fa-stack-1x text-gray"></i>
+                            </span>
+                                <h4>
+                                    <strong>数据处理</strong>
+                                </h4>
+                                <p>将单次作业传回的气体检测值进行后期处理，支持热力图方式显示。</p>
+                                <a href="#" class="btn btn-light">更多了解</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Callout -->
+    <aside class="callout">
+        <div class="text-vertical-center">
+            <h1></h1>
+        </div>
+    </aside>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>行业应用</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                    <a href="#" class="btn btn-dark">查看更多</a>
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Call to Action -->
+    <aside class="call-to-action bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3>更多功能正在研发中</h3>
+                    <a href="#" class="btn btn-lg btn-light">查看演示</a>
+                    <a href="#" class="btn btn-lg btn-dark">注册用户</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Map -->
+    <section id="contact" class="map"></section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h3><strong>无人机气体检测系统</strong>
+                    </h3>
+                    <p>海淀区学院路35号世宁大厦902
+                        <br>中国，北京</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i>010-57026847</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:qixuguang@winhye.com">qixuguang@winhye.com</a>
+                        </li>
+                    </ul>
+                    <hr class="small">
+                    <p class="text-muted">Copyright &copy; Winhye 2017</p>
+                </div>
+            </div>
+        </div>
+        <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Baidu Map JavaScript -->
+    <script src="js/bmap.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    //#to-top button appears after scrolling
+    var fixed = false;
+    $(document).scroll(function() {
+        if ($(this).scrollTop() > 250) {
+            if (!fixed) {
+                fixed = true;
+                // $('#to-top').css({position:'fixed', display:'block'});
+                $('#to-top').show("slow", function() {
+                    $('#to-top').css({
+                        position: 'fixed',
+                        display: 'block'
+                    });
+                });
+            }
+        } else {
+            if (fixed) {
+                fixed = false;
+                $('#to-top').hide("slow", function() {
+                    $('#to-top').css({
+                        display: 'none'
+                    });
+                });
+            }
+        }
+    });
+    </script>
+
+</body>
+
+</html>
