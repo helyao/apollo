@@ -1,19 +1,14 @@
-/*!
- * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
-
- body {
+body {
     overflow-x: hidden;
- }
+    height: 100%;
+}
  
- #title {
-	 height: 48px;
-	 width: 100%;
-	 background-color: black;
-	 position: fixed;
- }
+#title {
+    height: 52px;
+    width: 100%;
+    background-color: #242424;
+    position: fixed;
+}
 
 /* Toggle Styles */
 
@@ -26,19 +21,19 @@
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-left: 200px;
 }
 
 #sidebar-wrapper {
-	margin-top: 48px;
+	margin-top: 52px;
     z-index: 1000;
     position: fixed;
-    left: 250px;
+    left: 200px;
     width: 0;
     height: 100%;
-    margin-left: -250px;
+    margin-left: -200px;
     overflow-y: auto;
-    background: #000;
+    background: #1C384D;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -46,18 +41,21 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 200px;
 }
 
 #page-content-wrapper {
     width: 100%;
+    height: 100%;
     position: absolute;
-    padding: 15px;
+    margin-top: 48px;
+    padding: 0;
+    z-index: -1;
 }
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
-    margin-right: -250px;
+    margin-right: -200px;
 }
 
 /* Sidebar Styles */
@@ -65,10 +63,11 @@
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 250px;
+    width: 200px;
     margin: 0;
     padding: 0;
     list-style: none;
+    border: 5px black;
 }
 
 .sidebar-nav li {
@@ -80,12 +79,11 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #97FFFF;
+    color: #00E5FF;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
     background: rgba(255,255,255,0.2);
 }
 
@@ -115,7 +113,7 @@
     }
 
     #wrapper.toggled {
-        padding-left: 250px;
+        padding-left: 200px;
     }
 
     #sidebar-wrapper {
@@ -127,12 +125,11 @@
     }
 
     #page-content-wrapper {
-        padding: 20px;
-        position: relative;
+        position: absolute;
     }
 
     #wrapper.toggled #page-content-wrapper {
-        position: relative;
+        position: absolute;
         margin-right: 0;
     }
 }
@@ -140,7 +137,7 @@
 #menu-toggle {
     z-index: 1;
     position: fixed;
-    top: 48px;
+    top: 52px;
     right: 0;
 }
 
@@ -164,5 +161,19 @@
 .title, .time {
 	margin-top: 8px;
 	font-size: 24px;
-	color: white;
+	color: #9d9d9d;
+}
+
+.view, .main, .assist {
+    height: 100%;
+    padding: 0;
+    margin-bottom: 52px;
+}
+
+.main {
+    background-color: #bce8f1;
+}
+
+.assist {
+    background-color: #c9e2b3;
 }
