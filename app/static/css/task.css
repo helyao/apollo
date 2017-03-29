@@ -67,6 +67,7 @@ body {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    border-left: 2px solid #242424;
 }
 
 #page-content-wrapper {
@@ -136,7 +137,7 @@ body {
     right: 210px;
 }
 
-#map-deploy {
+#top-map {
     width: 100%;
     height: 25%;
 }
@@ -186,18 +187,13 @@ body {
     text-decoration: none;
 }
 
-#map-task {
+#foot-map {
     width: 100%;
     height: 25%;
     margin-top: -52px;
 }
 
-#video {
+#main-map {
     width: 100%;
     height: 100%;
-}
-
-.video-js {
-  font-size: 10px;
-  background-color: #2C384D;
 }

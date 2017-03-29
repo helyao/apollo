@@ -7,17 +7,14 @@
     <meta name="author" content="helyao">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" >
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uvgKc03uCSDsZXEdEjT1PaG4rPPVkm1W"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
-    <link href="css/video-js.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/Heatmap_min.js"></script>
 
-    <title>任务系统DEMO</title>
+    <title>无人机任务系统</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style-demo.css" rel="stylesheet">
+    <link href="css/task.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
     <div id="wrapper">
@@ -36,10 +33,10 @@
                     <a href="#">航空部署</a>
                 </li>
                 <li>
-                    <a href="#">飞行监控</a>
+                    <a href="#">飞行任务</a>
                 </li>
                 <li>
-                    <a href="#">飞行任务</a>
+                    <a href="#">飞行监控</a>
                 </li>
                 <li>
                     <a href="#">载荷投放</a>
@@ -59,59 +56,38 @@
             </ul>
         </div>
         <div id="page-content-wrapper">
-            <video id="player" class="video-js vjs-default-skin" muted autoplay controls
-                   preload="auto" width="640" height="480" data-setup="{}"></video>
+            <div id="main-map"></div>
         </div>
         <div id="assist-wrapper">
-            <div id="map-deploy"></div>
+            <div id="top-map"></div>
             <div id="func" onmouseover="mouseAction()" onmouseout="mouseAction()">
                 <ul class="func-nav">
                     <li>
-                        <div style="width: 50%; float: left">
-                            <img src="img/fun1.png">
-                        </div>
                         <a href="#">车辆识别</a>
                     </li>
                     <li>
-                        <div style="width: 50%; float: left">
-                            <img src="img/fun2.png">
-                        </div>
                         <a href="#">人员监控</a>
                     </li>
                     <li>
-                        <div style="width: 50%; float: left">
-                            <img src="img/fun3.png">
-                        </div>
                         <a href="#">事件监控</a>
                     </li>
                     <li>
-                        <div style="width: 50%; float: left">
-                            <img src="img/fun4.png">
-                        </div>
                         <a href="#">气体监控</a>
                     </li>
                     <li>
-                        <div style="width: 50%; float: left">
-                            <img src="img/fun5.png">
-                        </div>
                         <a href="#">自动预警</a>
                     </li>
-                    <li>
-                        <div style="width: 50%; float: left">
-                            <img src="img/fun6.png">
-                        </div>
                         <a href="#">时间历史叠加</a>
                     </li>
                 </ul>
             </div>
-            <div id="map-task"></div>
+            <div id="foot-map"></div>
         </div>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/moment.min.js"></script>
-    <script src="js/video.min.js"></script>
-    <script src="js/demo.js"></script>
+    <script src="js/task.js"></script>
     <script>
         function mouseAction() {
             $("#func").toggleClass("detailed");
