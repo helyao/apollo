@@ -21,7 +21,10 @@
         <div id="logo-wrapper">
             <img src="img/logo.png">
         </div>
-        <div id="title-wrapper">
+        <div id="info-wrapper">
+            <p id="info"></p>
+        </div>
+        <div id="time-wrapper">
             <p class="time"></p>
         </div>
         <div id="sidebar-wrapper">
@@ -50,51 +53,56 @@
                 <li>
                     <a href="#">自动预警</a>
                 </li>
-                <li>
-                    <a> </a>
-                </li>
             </ul>
-        </div>
-        <div id="page-content-wrapper">
-            <div id="main-map"></div>
         </div>
         <div id="assist-wrapper">
             <div id="top-map"></div>
-            <div id="func" onmouseover="mouseAction()" onmouseout="mouseAction()">
-                <ul class="func-nav">
+            <div id="item">
+                <ul class="item-nav">
                     <li>
-                        <a href="#">车辆识别</a>
+                        <a href="#">2016-11-23 14:23:17</a>
                     </li>
                     <li>
-                        <a href="#">人员监控</a>
+                        <a href="#">2016-11-23 14:23:17</a>
                     </li>
                     <li>
-                        <a href="#">事件监控</a>
+                        <a href="#">2016-11-23 14:23:17</a>
                     </li>
                     <li>
-                        <a href="#">气体监控</a>
+                        <a href="#">2016-11-23 14:23:17</a>
                     </li>
                     <li>
-                        <a href="#">自动预警</a>
+                        <a href="#">2016-11-23 14:23:17</a>
                     </li>
-                        <a href="#">时间历史叠加</a>
+                    <li>
+                        <a href="#">2016-11-23 14:23:17</a>
+                    </li>
+                    <li>
+                        <a href="#">2016-11-23 14:23:17</a>
+                    </li>
+                    <li>
+                        <a href="#">2016-11-23 14:23:17</a>
+                    </li>
+                    <li>
+                        <a href="#">2016-11-23 14:23:17</a>
+                    </li>
+                    <li>
+                        <a href="#">2016-11-23 14:23:17</a>
+                    </li>
+                    <li>
+                        <a href="#">2016-11-23 14:23:17</a>
                     </li>
                 </ul>
             </div>
             <div id="foot-map"></div>
+        </div>
+        <div id="page-content-wrapper">
+            <div id="main-map"></div>
         </div>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/task.js"></script>
-    <script>
-        function mouseAction() {
-            $("#func").toggleClass("detailed");
-        }
-        window.onload = function () {
-            setInterval("$('.time')[0].innerHTML = moment().format('YYYY-MM-DD hh:mm:ss a')",1000);
-        }
-    </script>
 </body>
 </html>

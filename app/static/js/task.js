@@ -1,12 +1,74 @@
+var BMAP_AK = 'uvgKc03uCSDsZXEdEjT1PaG4rPPVkm1W';
+var allMarkers = [];
+// add current clock
+window.onload = function () {
+    setInterval("$('.time')[0].innerHTML = moment().format('YYYY-MM-DD hh:mm:ss a')",1000);
+    allMarkers = cMap.getOverlays();
+};
+
+// add item-list effection
+function mouseAction() {
+    $("#item").toggleClass("detailed");
+}
+$("#item").mouseover(mouseAction);
+$("#item").mouseout(mouseAction);
+
+// change title name
+function setTitle(lat, lng) {
+    var apiString = 'http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location='
+        + lng + ',' + lat + '&output=json&pois=1&ak=' + BMAP_AK + '&callback=?';
+    $.getJSON(apiString, function(data) {
+        var city = data.result.addressComponent.city;
+        var district = data.result.addressComponent.district;
+        var street = data.result.addressComponent.street;
+        var street_num = data.result.addressComponent.street_number;
+        console.log(data);
+        if (street_num) {
+            $('#info')[0].innerHTML = city + ' - ' + district + ' - ' + street + ' - ' + street_num;
+        } else {
+            $('#info')[0].innerHTML = city + ' - ' + district + ' - ' + street;
+        }
+    })
+}
+
+/* ============================================================ */
 // main-map
 cMap = new BMap.Map("main-map");
-cMap.centerAndZoom(new BMap.Point(116.358853,39.991619),12);
+cMap.centerAndZoom(new BMap.Point(116.404, 39.915),12);
 cMap.setMapStyle({style:'grayscale'});
 cMap.enableScrollWheelZoom();
 cMap.enableKeyboard();
 cMap.enableDragging();
 cMap.enableDoubleClickZoom();
 // add event point - the target with record(image or video)
+var markers = [];
+var bounds = cMap.getBounds();
+var sw = bounds.getSouthWest();
+var ne = bounds.getNorthEast();
+var lngSpan = Math.abs(sw.lng - ne.lng);
+var latSpan = Math.abs(ne.lat - sw.lat);
+for (var i = 0; i < 25; i++) {
+    var tmpoint = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7),
+        ne.lat -latSpan * (Math.random() * 0.7));
+    markers[i] = new BMap.Marker(tmpoint);
+    markers[i].addEventListener('click', function(e){
+        console.log('lng = ' + e.point.lng + '; lat = ' + e.point.lat);
+        setTitle(e.point.lng, e.point.lat);
+        setCurMaker(e.point);
+    });
+    cMap.addOverlay(markers[i]);
+}
+
+function setCurMaker(marker) {      // set the current marker
+    for (var i = 0; i < allMarkers.length - 1; i++) {
+        var iMarker = allMarkers[i].point;
+        console.log(iMarker.lng);
+        if(Math.abs(iMarker.lng - marker.lng) < 0.000001 && Math.abs(iMarker.lat - marker.lat) < 0.000001) {
+            console.log(i);
+        }
+    }
+    // marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+}
 
 // add polyline - mission history
 
@@ -131,3 +193,4 @@ var points =[
 heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":20});
 fMap.addOverlay(heatmapOverlay);
 heatmapOverlay.setDataSet({data:points,max:100});
+
