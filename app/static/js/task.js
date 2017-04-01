@@ -1,10 +1,33 @@
 var BMAP_AK = 'uvgKc03uCSDsZXEdEjT1PaG4rPPVkm1W';
+var MAK_NUM = 10;
 var allMarkers = [];
+
+var allPictures = [
+    {'id': 'A001', 'time' : '2016-11-06 12:34:24', 'loc': 0},
+    {'id': 'A002', 'time' : '2016-11-13 14:21:35', 'loc': 1},
+    {'id': 'A013', 'time' : '2016-11-14 15:43:24', 'loc': 2},
+    {'id': 'A001', 'time' : '2016-11-14 10:12:14', 'loc': 3},
+    {'id': 'A012', 'time' : '2016-11-21 09:26:05', 'loc': 4},
+    {'id': 'A006', 'time' : '2016-11-28 10:43:35', 'loc': 5},
+    {'id': 'A009', 'time' : '2016-11-30 13:45:38', 'loc': 6},
+    {'id': 'A010', 'time' : '2016-12-01 14:12:05', 'loc': 7},
+    {'id': 'A001', 'time' : '2016-12-07 14:06:09', 'loc': 8},
+    {'id': 'A005', 'time' : '2016-12-12 17:08:59', 'loc': 9}
+];
+
 // add current clock
 window.onload = function () {
     setInterval("$('.time')[0].innerHTML = moment().format('YYYY-MM-DD hh:mm:ss a')",1000);
     allMarkers = cMap.getOverlays();
+    updateList();
 };
+
+// $('#myModal').on('click', function () {
+//     if ($('#myModal').css('display') == "block") {
+//         $('#myModal').modal('toggle');
+//     }
+// });
+
 
 // add item-list effection
 function mouseAction() {
@@ -12,6 +35,13 @@ function mouseAction() {
 }
 $("#item").mouseover(mouseAction);
 $("#item").mouseout(mouseAction);
+
+// add sidebar effection
+function clickAction(nav) {
+    $(".sidebar-nav li a").removeClass("on");
+    $(this).toggleClass("on");
+}
+$(".sidebar-nav li a").click(clickAction);
 
 // change title name
 function setTitle(lat, lng) {
@@ -22,13 +52,48 @@ function setTitle(lat, lng) {
         var district = data.result.addressComponent.district;
         var street = data.result.addressComponent.street;
         var street_num = data.result.addressComponent.street_number;
-        console.log(data);
-        if (street_num) {
-            $('#info')[0].innerHTML = city + ' - ' + district + ' - ' + street + ' - ' + street_num;
-        } else {
-            $('#info')[0].innerHTML = city + ' - ' + district + ' - ' + street;
+        var title_str = city + ' - ' + district;
+        if (street) {
+            title_str += ' - ' + street;
         }
+        if (street_num) {
+            title_str += ' - ' + street_num;
+        }
+        $('#info')[0].innerHTML = title_str;
     })
+}
+
+function showLocation(id) {
+    allMarkers[curMkrNum].setAnimation();
+    curMkrNum = id;
+    allMarkers[curMkrNum].setAnimation(BMAP_ANIMATION_BOUNCE);
+    setTitle(allMarkers[curMkrNum].point.lng, allMarkers[curMkrNum].point.lat);
+    // cMap.setCenter(allMarkers[curMkrNum].point);
+}
+
+function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+}
+
+$('.modal').on('show.bs.modal', centerModal);
+$(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
+});
+
+function closeImage() {
+    $('#myModal').modal('toggle');
+}
+
+function updateList() {
+    for(var i = 0; i < allPictures.length; i++) {
+        var content = allPictures[i].id + ' @ ' + allPictures[i].time;
+        var iLoc = allPictures[i].loc;
+        $(".item-nav").append("<li><a type='button' data-toggle='modal' data-target='#myModal' onmouseover='showLocation("+iLoc+")'>" + content + "</a></li>");
+    }
 }
 
 /* ============================================================ */
@@ -47,27 +112,33 @@ var sw = bounds.getSouthWest();
 var ne = bounds.getNorthEast();
 var lngSpan = Math.abs(sw.lng - ne.lng);
 var latSpan = Math.abs(ne.lat - sw.lat);
-for (var i = 0; i < 25; i++) {
+for (var i = 0; i < MAK_NUM; i++) {
     var tmpoint = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7),
         ne.lat -latSpan * (Math.random() * 0.7));
     markers[i] = new BMap.Marker(tmpoint);
     markers[i].addEventListener('click', function(e){
-        console.log('lng = ' + e.point.lng + '; lat = ' + e.point.lat);
         setTitle(e.point.lng, e.point.lat);
-        setCurMaker(e.point);
+        setCurMaker(e.currentTarget.point);
     });
     cMap.addOverlay(markers[i]);
 }
 
+var curMkrNum = 0;
 function setCurMaker(marker) {      // set the current marker
-    for (var i = 0; i < allMarkers.length - 1; i++) {
-        var iMarker = allMarkers[i].point;
-        console.log(iMarker.lng);
-        if(Math.abs(iMarker.lng - marker.lng) < 0.000001 && Math.abs(iMarker.lat - marker.lat) < 0.000001) {
-            console.log(i);
+    for (var i = 0; i < allMarkers.length; i++) {
+        if (allMarkers[i].U.className == "BMap_Marker BMap_noprint")
+        {
+            if(allMarkers[i].point.lng == marker.lng && allMarkers[i].point.lat == marker.lat) {
+                console.log('The number of marker = ' + i);
+                allMarkers[curMkrNum].setAnimation();
+                curMkrNum = i;
+                allMarkers[i].setAnimation(BMAP_ANIMATION_BOUNCE);
+                // break;
+            }
         }
     }
-    // marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+    $(".item-nav li").css('display', 'none');
+    $(".item-nav li:eq("+curMkrNum+")").css('display', 'block');
 }
 
 // add polyline - mission history
@@ -88,6 +159,12 @@ tMap.enableDoubleClickZoom();
 var rotorIcon = new BMap.Icon("img/quadrotor64.png", new BMap.Size(64, 64));
 var planeMarker = new BMap.Marker(new BMap.Point(116.358853,39.991619), {icon: rotorIcon});
 tMap.addOverlay(planeMarker);
+var airLine = new BMap.Polyline([
+    new BMap.Point(116.282, 39.950),
+    new BMap.Point(116.358853, 39.991619),
+    new BMap.Point(116.425, 39.963)
+], {strokeColor: '#AE0000', strokeWeight:2, strokeOpacity:0.5});
+tMap.addOverlay(airLine);
 
 // foot-map
 fMap = new BMap.Map("foot-map", {mapType: BMAP_HYBRID_MAP});

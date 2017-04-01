@@ -8,6 +8,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" >
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uvgKc03uCSDsZXEdEjT1PaG4rPPVkm1W"></script>
     <script type="text/javascript" src="js/Heatmap_min.js"></script>
+    <link rel="stylesheet" href="css/remodal.css">
+    <link rel="stylesheet" href="css/remodal-default-theme.css">
 
     <title>无人机任务系统</title>
 
@@ -30,7 +32,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li>
-                    <a href="#">热力区域</a>
+                    <a href="#" class="on">热力区域</a>
                 </li>
                 <li>
                     <a href="#">航空部署</a>
@@ -56,53 +58,40 @@
             </ul>
         </div>
         <div id="assist-wrapper">
-            <div id="top-map"></div>
+            <div id="top-map" class="baidu-maps"></div>
             <div id="item">
-                <ul class="item-nav">
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                    <li>
-                        <a href="#">2016-11-23 14:23:17</a>
-                    </li>
-                </ul>
+                <ul class="item-nav"></ul>
             </div>
-            <div id="foot-map"></div>
+            <div id="foot-map" class="baidu-maps"></div>
         </div>
         <div id="page-content-wrapper">
-            <div id="main-map"></div>
+            <div id="main-map" class="baidu-maps"></div>
+            <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button>-->
+            <!--<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+              <!--<div class="modal-dialog">-->
+                <!--<div class="modal-content">-->
+                    <!--<div class="modal-body">-->
+                        <!--<img id="image" src="img/demo1/10.jpg" class="img-responsive">-->
+                        <!--<button type="button" style="z-index: 999;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Close</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+        <div class="remodal" data-remodal-id="modal">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <h1>Remodal</h1>
+            <p>
+                Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+            </p>
+            <br>
+            <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+            <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
         </div>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/moment.min.js"></script>
+    <script src="js/remodal.min.js"></script>
     <script src="js/task.js"></script>
 </body>
 </html>
