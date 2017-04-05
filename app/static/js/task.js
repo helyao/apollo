@@ -92,7 +92,7 @@ function updateList() {
     for(var i = 0; i < allPictures.length; i++) {
         var content = allPictures[i].id + ' @ ' + allPictures[i].time;
         var iLoc = allPictures[i].loc;
-        $(".item-nav").append("<li><a type='button' data-toggle='modal' data-target='#myModal' onmouseover='showLocation("+iLoc+")'>" + content + "</a></li>");
+        $(".item-nav").append("<li><a type='button' href='#modal' onmouseover='showLocation("+iLoc+")'>" + content + "</a></li>");
     }
 }
 
@@ -270,4 +270,33 @@ var points =[
 heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":20});
 fMap.addOverlay(heatmapOverlay);
 heatmapOverlay.setDataSet({data:points,max:100});
+
+// show picture
+$(document).on('opening', '.remodal', function () {
+    console.log('opening');
+});
+
+$(document).on('opened', '.remodal', function () {
+    console.log('opened');
+});
+
+$(document).on('closing', '.remodal', function (e) {
+    console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
+});
+
+$(document).on('closed', '.remodal', function (e) {
+    console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
+});
+
+$(document).on('confirmation', '.remodal', function () {
+    console.log('confirmation');
+});
+
+$(document).on('cancellation', '.remodal', function () {
+    console.log('cancellation');
+});
+
+$('[data-remodal-id=modal]').remodal({
+    modifier: 'with-picture-theme'
+});
 
