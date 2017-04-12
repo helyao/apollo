@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >
+
+    <title>Apollo &mdash; 无人机任务系统</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+        body {
+            overflow-x: hidden;
+            height: 100%;
+        }
+        #sidebar {
+            position: fixed;
+            z-index: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 180px;
+            height: 100%;
+            background-color: #242424;
+            color: #aaaaaa;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+        .scroll-div {
+            position: relative;
+            overflow: hidden;
+            width: auto;
+            height: 100%;
+        }
+        .logo {
+            margin-left: -5px;
+            width: 55px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: 700;
+            font-size: 18px;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+        #sidebar.menu-toggled .logo {
+            width: 185px;
+        }
+        .logo a {
+            color: white;
+            text-decoration:none
+        }
+        .menu {
+            letter-spacing: 3px;
+            font-size: 18px;
+        }
+        .menu li {
+            line-height: 32px;
+        }
+        .menu li a {
+            font-weight: 500;
+            color: #7a7a7a;
+        }
+        .menu li:active {
+            background-color: black;
+        }
+        .page-control {
+            background-color: #ffffff;
+            position: absolute;
+            z-index: 1;
+            margin-left: 50px;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+        .page-control.menu-toggled {
+            margin-left: 180px;
+            margin-right: -130px;
+        }
+        .time {
+            font-size: 16px;
+        }
+        .avatar {
+            margin-top: -5px;
+        }
+        .circle {
+            display: inline-block;
+            border-radius: 50%;
+            background-color: #f0b518;
+            font-weight: 700;
+            text-align: center;
+            width: 1.4em;
+            height: 1.4em;
+        }
+        .new-message {
+            display: block;
+            background: red;
+            border-radius: 50%;
+            width: 0.4em;
+            height: 0.4em;
+            top: 0;
+            right: -0.2em;
+            position: absolute;
+        }
+        #contain {
+            position: relative;
+            z-index: 0;
+            margin-left: 50px;
+            height: 100%;
+            background-color: #eeeeee;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+        #contain.menu-toggled {
+            margin-left: 180px;
+            margin-right: -130px;
+        }
+        @font-face {
+            font-family: 'Glyphicons Halflings';
+            src: url('font/glyphicons-halflings-regular.eot');
+            src: url('font/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('font/glyphicons-halflings-regular.woff') format('woff'), url('font/glyphicons-halflings-regular.ttf') format('truetype'), url('font/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav id="sidebar" role="navigation">
+        <div class="scroll-div">
+            <div class="sidebar-content">
+                <header class="logo hidden-xs">
+                    <a href="#">Apol</a>
+                </header>
+                <ul class="menu nav navbar">
+                    <li>
+                        <a class="collapse dropdown">
+                            <span class="glyphicon glyphicon-star"></span>
+                            &nbsp;历史事件
+                            <span class="caret"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav id="title" class="page-control navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                            &nbsp;<span class="time">2017-01-01 00:00:00 am</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </span>
+                            <input class="form-control" type="text" placeholder="请输入事件编号">
+                        </div>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="avatar pull-left">
+                                <img class="img-circle" src="image/user.jpg">
+                            </span>
+                            &nbsp; <strong>齐</strong>旭光&nbsp;
+                            <span class="circle">6</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    &nbsp; 我的账号
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-inbox">
+                                        <i class="new-message"></i>
+                                    </span>
+                                    &nbsp; 我的消息
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-log-out"></span>
+                                    &nbsp; 退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-tag"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="contain" class="container-fluid">
+
+    </div>
+
+<script type="application/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="application/javascript" src="js/bootstrap.min.js"></script>
+<script type="application/javascript" src="js/moment.min.js"></script>
+<script>
+    window.onload = function () {
+        setInterval("$('.time')[0].innerHTML = '&nbsp;' + moment().format('YYYY-MM-DD hh:mm:ss a')",1000);
+    };
+
+    function spreadMenu() {
+        $("#title").toggleClass("menu-toggled");
+        $("#sidebar").toggleClass("menu-toggled");
+        $("#contain").toggleClass("menu-toggled");
+    }
+    $("#sidebar").mouseover(spreadMenu);
+    $("#sidebar").mouseout(spreadMenu);
+</script>
+</body>
+</html>
