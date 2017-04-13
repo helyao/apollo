@@ -59,20 +59,73 @@
         .logo a {
             color: white;
             text-decoration:none
+            cursor: pointer;
         }
         .menu {
+            margin-left: -5px;
             letter-spacing: 3px;
             font-size: 18px;
         }
         .menu li {
-            line-height: 32px;
+            line-height: 48px;
         }
         .menu li a {
             font-weight: 500;
             color: #7a7a7a;
+            cursor: pointer;
         }
-        .menu li:active {
+        .menu li a:hover {
             background-color: black;
+        }
+        .menu li a span.glyphicon {
+            display: inline-block;
+            border-radius: 50%;
+            font-weight: 700;
+            text-align: center;
+            width: 1.4em;
+            height: 1.4em;
+            padding-left: 0.12em;
+            padding-top: 0.12em;
+        }
+        .menu li.active a.collapse {
+            color: #f0b518;
+        }
+        .menu li.active a.collapse span.glyphicon {
+            color: #7a7a7a;
+            background-color: #f0b518;
+        }
+        .dropdown-menu-custom {
+            color: #7a7a7a;
+            background-color: #313131;
+            line-height: 32px;
+            font-size: 16px;
+            font-weight: 500;
+            padding-left: 0;
+            display: none;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+        #sidebar.menu-toggled .menu li.active .dropdown-menu-custom {
+            display: block;
+        }
+        .dropdown-menu-custom li {
+            display: inline-block;
+        }
+        .dropdown-menu-custom li a {
+            padding: 8px 40px 8px 57px;
+            text-decoration:none;
+            cursor: pointer;
+        }
+        .dropdown-menu-custom li a:hover {
+            color: white;
+        }
+        .item a {
+            color: white !important;
+        }
+        .dropdown-menu-custom li a:hover .dropdown-menu-custom li{
+            background-color: #313131;
         }
         .page-control {
             background-color: #ffffff;
@@ -87,6 +140,10 @@
         .page-control.menu-toggled {
             margin-left: 180px;
             margin-right: -130px;
+        }
+        .page-control.list-toggled, #contain.list-toggled {
+            /*margin-left: -190px;*/
+            /*margin-right: 240px;*/
         }
         .time {
             font-size: 16px;
@@ -128,10 +185,37 @@
             margin-left: 180px;
             margin-right: -130px;
         }
+        #list {
+            position: fixed;
+            z-index: 0;
+            right: -240px;
+            top: 0;
+            bottom: 0;
+            width: 240px;
+            height: 100%;
+            margin-right: 0;
+            background-color: #242424;
+            color: #aaaaaa;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+        #list.list-toggled {
+            right: 0;
+        }
         @font-face {
             font-family: 'Glyphicons Halflings';
             src: url('font/glyphicons-halflings-regular.eot');
             src: url('font/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('font/glyphicons-halflings-regular.woff') format('woff'), url('font/glyphicons-halflings-regular.ttf') format('truetype'), url('font/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+        }
+        .height-full {
+            height: 100%;
+        }
+        #main-left {
+            margin-top: 50px;
+            width: 100%;
+            height: calc(100% - 50px);
         }
     </style>
 
@@ -146,14 +230,37 @@
         <div class="scroll-div">
             <div class="sidebar-content">
                 <header class="logo hidden-xs">
-                    <a href="#">Apol</a>
+                    <a href="#">apol</a>
                 </header>
                 <ul class="menu nav navbar">
-                    <li>
-                        <a class="collapse dropdown">
+                    <li class="active">
+                        <a class="collapse dropdown dropdown-toggle">
                             <span class="glyphicon glyphicon-star"></span>
-                            &nbsp;历史事件
+                            &nbsp;统计信息
                             <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu-custom">
+                            <li class="item">
+                                <a>&nbsp;区域查询</a>
+                            </li>
+                            <li>
+                                <a>&nbsp;事件查询</a>
+                            </li>
+                            <li>
+                                <a>&nbsp;任务查询</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                       <a class="collapse">
+                           <span class="glyphicon glyphicon-map-marker"></span>
+                           &nbsp;任务规划
+                       </a>
+                    </li>
+                    <li>
+                        <a class="collapse">
+                            <span class="glyphicon glyphicon-plane"></span>
+                            &nbsp;航空部署
                         </a>
                     </li>
                 </ul>
@@ -219,7 +326,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a id="btn-list">
                             <span class="glyphicon glyphicon-tag"></span>
                         </a>
                     </li>
@@ -228,12 +335,21 @@
         </div>
     </nav>
     <div id="contain" class="container-fluid">
+        <div class="col-md-8 height-full">
+            <div id="main-left">
 
+            </div>
+        </div>
     </div>
+    <nav id="list" role="navigation" class="navbar navbar-right">
+    </nav>
 
 <script type="application/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="application/javascript" src="js/bootstrap.min.js"></script>
 <script type="application/javascript" src="js/moment.min.js"></script>
+<script type="application/javascript" src="js/echarts.min.js"></script>
+<script type="application/javascript" src="theme/infographic.js"></script>
+<script type="application/javascript" src="map/beijing.js"></script>
 <script>
     window.onload = function () {
         setInterval("$('.time')[0].innerHTML = '&nbsp;' + moment().format('YYYY-MM-DD hh:mm:ss a')",1000);
@@ -243,9 +359,53 @@
         $("#title").toggleClass("menu-toggled");
         $("#sidebar").toggleClass("menu-toggled");
         $("#contain").toggleClass("menu-toggled");
+        // close list sidebar
+        $("#title").removeClass("list-toggled");
+        $("#contain").removeClass("list-toggled");
+        $("#list").removeClass("list-toggled");
     }
     $("#sidebar").mouseover(spreadMenu);
     $("#sidebar").mouseout(spreadMenu);
+
+    function spreadList() {
+        $("#title").toggleClass("list-toggled");
+        $("#contain").toggleClass("list-toggled");
+        $("#list").toggleClass("list-toggled");
+    }
+    $("#btn-list").click(spreadList);
+
+    function selectMenu() {
+        $(".menu li").removeClass("active");
+        $(this).parent().toggleClass("active");
+    }
+    $(".menu li a.collapse").click(selectMenu);
+
+    function selectItem() {
+        $(".dropdown-menu-custom li").removeClass("item");
+        $(this).parent().toggleClass("item");
+    }
+    $(".dropdown-menu-custom li a").click(selectItem);
+
+    // echarts beijing map
+//    var chart = echarts.init(document.getElementById('main-left'));
+//    chart.setOption({
+//        series: [{
+//            type: 'map',
+//            map: 'beijing'
+//        }]
+//    });
+
+    $.get('map/beijing.json', function (chinaJson) {
+    echarts.registerMap('beijing', chinaJson);
+    var chart = echarts.init(document.getElementById('main-left'), "infographic");
+    chart.setOption({
+        series: [{
+            type: 'map',
+            map: 'beijing'
+        }]
+    });
+});
+
 </script>
 </body>
 </html>
