@@ -233,7 +233,7 @@
             width: 100%;
             height: calc(40% - 50px);
         }
-        #load-heatmap {
+        #load-heatmap, #task-heatmap {
             width: 100%;
             height: 60%;
         }
@@ -243,10 +243,11 @@
             padding-left: 5%;
             padding-top: 20px;
         }
-        #load-heatmap-bmap {
+        #load-heatmap-bmap, #task-heatmap-bmap {
             width: 100%;
             padding-right: 5px;
             height: calc(100% - 74px);
+            border: 1px solid #242424;
         }
     </style>
 
@@ -377,9 +378,17 @@
         </div>
         <div class="col-md-6 height-full">
             <div id="task-calendar"></div>
-            <div id="load-heatmap">
-                <h2 class="sub-title">航空部署分布图</h2>
-                <div id="load-heatmap-bmap"></div>
+            <div class="col-md-6 height-full">
+                <div id="load-heatmap">
+                    <h2 class="sub-title">航空部署分布图</h2>
+                    <div id="load-heatmap-bmap"></div>
+                </div>
+            </div>
+            <div class="col-md-6 height-full">
+                <div id="task-heatmap">
+                    <h2 class="sub-title">任务密度分布图</h2>
+                    <div id="task-heatmap-bmap"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -639,7 +648,7 @@
         {"lng":116.42076,"lat":39.915251,"count":70},
         {"lng":116.425867,"lat":39.918989,"count":8}];
 
-    heatmapOverlay = new BMapLib.HeatmapOverlay({
+    loadHeatmapOverlay = new BMapLib.HeatmapOverlay({
         "radius": 20,
         "gradient": {
             .2:'rgb(255, 215, 19)',
@@ -647,8 +656,29 @@
             .8:'rgb(214, 44, 46)'
         }
     });
-    loadHeatMap.addOverlay(heatmapOverlay);
-    heatmapOverlay.setDataSet({
+    loadHeatMap.addOverlay(loadHeatmapOverlay);
+    loadHeatmapOverlay.setDataSet({
+        data: points,
+        max: 100
+    });
+
+    taskHeatMap = new BMap.Map("task-heatmap-bmap");
+    taskHeatMap.centerAndZoom(new BMap.Point(116.418261, 39.921984),15);
+    taskHeatMap.setMapStyle({style:'googlelite'});
+    taskHeatMap.enableScrollWheelZoom();
+    taskHeatMap.enableKeyboard();
+    taskHeatMap.enableDragging();
+    taskHeatMap.enableDoubleClickZoom();
+    taskHeatmapOverlay = new BMapLib.HeatmapOverlay({
+        "radius": 20,
+        "gradient": {
+            .2:'rgb(255, 215, 19)',
+            .5:'rgb(231, 91, 38)',
+            .8:'rgb(214, 44, 46)'
+        }
+    });
+    taskHeatMap.addOverlay(taskHeatmapOverlay);
+    taskHeatmapOverlay.setDataSet({
         data: points,
         max: 100
     });

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="Shortcut Icon" href="../static/custom/image/favicon.ico">
+
+    <title>无人机管理平台 V1.0</title>
+
+    <!-- Bootstrap -->
+    <link href="../static/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../static/font/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../static/nprogress/nprogress.css" rel="stylesheet">
+
+    {% block head_css %}
+    {% endblock %}
+
+    <!-- Custom Theme Style -->
+    <link href="../static/custom/css/custom.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="/" class="site_title"><i class="fa fa-plane"></i> <span>&nbsp;无人机管理平台</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="../static/custom/image/user.jpg" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>欢迎</span>
+                        <h2>齐旭光</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>通用功能</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="/"><i class="fa fa-table"></i> 系统概览</a></li>
+                            <li><a><i class="fa fa-map"></i> 历史查询 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/history_record">事件记录查询</a></li>
+                                    <li><a href="/history_line">巡线热度查询</a></li>
+                                    <li><a href="/history_plane">航空部署查询</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-desktop"></i> 任务监控 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/monitor_video">实时视频监控</a></li>
+                                    <li><a href="/monitor_data">数据采集监控</a></li>
+                                    <li><a href="/monitor_map">航线位置监控</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/message"><i class="fa fa-info-circle"></i> 消息列表 </a></li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>后台管理</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="/manage_user"><i class="fa fa-users"></i> 人员管理</a></li>
+                            <li><a href="/manage_equip"><i class="fa fa-cubes"></i> 设备管理</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /sidebar menu -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a class="user-profile dropdown-toggle" data-toggle="dropdown"
+                               aria-expanded="false">
+                                <img src="../static/custom/image/user.jpg" alt="">齐旭光
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li>
+                                    <a href="/task">
+                                        <span class="badge bg-red pull-right">2</span>
+                                        <span>待办事项</span>
+                                    </a>
+                                </li>
+                                <li><a href="/login"><i class="fa fa-sign-out pull-right"></i> 退出</a></li>
+                            </ul>
+                        </li>
+
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle info-number" data-toggle="dropdown"
+                               aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge bg-green">8</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="../static/custom/image/user1.jpg" alt="Profile Image"/></span>
+                                        <span>
+                                            <span>张三</span>
+                                            <span class="time">3分钟前</span>
+                                        </span>
+                                        <span class="message">
+                                            开始执行飞行任务Task20170420-A02
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="../static/custom/image/user2.jpg" alt="Profile Image"/></span>
+                                        <span>
+                                            <span>赵四</span>
+                                            <span class="time">2小时前</span>
+                                        </span>
+                                        <span class="message">
+                                            开始执行飞行任务Task20170420-B01
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="../static/custom/image/user3.jpg" alt="Profile Image"/></span>
+                                        <span>
+                                            <span>王五</span>
+                                            <span class="time">3天前</span>
+                                        </span>
+                                        <span class="message">
+                                            任务Task20170417-A05执行完成
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="../static/custom/image/admin.jpg" alt="Profile Image"/></span>
+                                        <span>
+                                            <span>系统消息</span>
+                                            <span class="time">4月16日</span>
+                                        </span>
+                                        <span class="message">
+                                            明天全市范围内禁飞
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a href="/message">
+                                            <strong>查看所有消息</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            {% block page_content %}
+            {% endblock %}
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                APOLLO &mdash; 无人机管理平台
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../static/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../static/bootstrap/bootstrap.min.js"></script>
+<!-- NProgress -->
+<script src="../static/nprogress/nprogress.js"></script>
+
+{% block body_js %}
+{% endblock %}
+
+<!-- Custom Theme Scripts -->
+<script src="../static/custom/js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="Shortcut Icon" href="../static/custom/image/favicon.ico">
+
+    <title>唐山湾管理平台 V1.0</title>
+
+    <!-- Bootstrap -->
+    <link href="../static/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../static/font/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../static/custom/css/custom.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="/" class="site_title"><i class="fa fa-spinner"></i> <span>&nbsp;唐山湾管理平台</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="../static/custom/image/user.jpg" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>欢迎</span>
+                        <h2>姚鹤立</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>通用功能</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="/"><i class="fa fa-map"></i> 系统概览</a></li>
+                            <li><a><i class="fa fa-wrench"></i> 吊舱控制 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/loadctl_base">正常调度控制</a></li>
+                                    <li><a href="/loadctl_debug">测试部署调试</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/equpctl_base"><i class="fa fa-magnet"></i> 轨旁控制 </a></li>
+                            <li><a href="/message"><i class="fa fa-info-circle"></i> 消息列表 </a></li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>统计报表</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-list"></i> 历史记录
+                                <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/equip_history">设备历史记录</a></li>
+                                    <li><a href="/user_history">登录操作记录</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-table"></i> 运营数据
+                                <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/data_table">基本数据列表</a></li>
+                                    <li><a href="/data_distribution">数据分布图</a></li>
+                                    <li><a href="/data_compare">同期数据对比图</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bug"></i> 故障数据
+                                <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/bug_list">故障列表</a></li>
+                                    <li><a href="/bug_distribution">故障分布</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>后台管理</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="/manage_user"><i class="fa fa-users"></i> 人员管理</a></li>
+                            <li><a><i class="fa fa-cubes"></i> 设备管理
+                                <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/manage_map">地图信息修改</a></li>
+                                    <li><a href="/manage_load">吊舱信息修改</a></li>
+                                    <li><a href="/manage_equip">轨旁信息修改</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /sidebar menu -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a class="user-profile dropdown-toggle" data-toggle="dropdown"
+                               aria-expanded="false">
+                                <img src="../static/custom/image/user.jpg" alt="">姚鹤立
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li>
+                                    <a href="/message">
+                                        <span class="badge bg-red pull-right">2</span>
+                                        <span>我的申请</span>
+                                    </a>
+                                </li>
+                                <li><a href="/login"><i class="fa fa-sign-out pull-right"></i> 退出</a></li>
+                            </ul>
+                        </li>
+
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle info-number" data-toggle="dropdown"
+                               aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge bg-green">6</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="../static/custom/image/user1.jpg" alt="Profile Image"/></span>
+                                        <span>
+                                            <span>张三</span>
+                                            <span class="time">3分钟前</span>
+                                        </span>
+                                        <span class="message">
+                                            申请更改地图信息
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="../static/custom/image/user2.jpg" alt="Profile Image"/></span>
+                                        <span>
+                                            <span>赵四</span>
+                                            <span class="time">2小时前</span>
+                                        </span>
+                                        <span class="message">
+                                            申请更改吊舱设备信息
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="../static/custom/image/user3.jpg" alt="Profile Image"/></span>
+                                        <span>
+                                            <span>王五</span>
+                                            <span class="time">3天前</span>
+                                        </span>
+                                        <span class="message">
+                                            申请更改轨旁设备信息
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="../static/custom/image/admin.jpg" alt="Profile Image"/></span>
+                                        <span>
+                                            <span>系统消息</span>
+                                            <span class="time">4月16日</span>
+                                        </span>
+                                        <span class="message">
+                                            明天运营结束进行系统检修
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a href="/message">
+                                            <strong>查看所有消息</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <!-- top tiles -->
+            <div class="row tile_count">
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-bus"></i> 吊舱设备总量 </span>
+                    <div class="count">72</div>
+                    <span class="count_bottom">离线检修设备数
+                        <i class="red"><i class="fa"></i>3</i>
+                    </span>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-archive"></i> 轨旁设备总量 </span>
+                    <div class="count">112</div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-calendar"></i> 系统运行天数 </span>
+                    <div class="count">17</div>
+                    <span class="count_bottom">无故障运行天数
+                        <i class="green"><i class="fa"></i>17</i>
+                    </span>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-line-chart"></i> 运行总公里数 </span>
+                    <div class="count">231</div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-star"></i> 总运行次数 </span>
+                    <div class="count">79</div>
+                    <span class="count_bottom">平均每次公里数
+                        <i class="fa"></i>3.2
+                    </span>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-bar-chart"></i> 本月运行公里数 </span>
+                    <div class="count">24</div>
+                    <span class="count_bottom">比上个月同期
+                        <i class="red"><i class="fa fa-sort-asc"></i>3%</i>
+                    </span>
+                </div>
+            </div>
+            <!-- /top tiles -->
+
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                PayFairTax &mdash; Compare Your Property Tax with Neighbors.
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../static/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../static/bootstrap/bootstrap.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../static/custom/js/custom.js"></script>
+
+</body>
+</html>
